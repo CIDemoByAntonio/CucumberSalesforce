@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class WebConnector {
 	Properties OR=null;
@@ -49,6 +50,9 @@ public class WebConnector {
 		driver.findElement(By.xpath(OR.getProperty(objectname))).sendKeys(text);
 	}
 	public void select(String objectname, String value){
+	
+		Select option = new Select(driver.findElement(By.xpath(OR.getProperty(objectname))));
+		option.selectByVisibleText(value);
 		
 	}
 	public boolean isElementPresent(String objectname){
